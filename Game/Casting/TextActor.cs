@@ -6,7 +6,7 @@ using Snake_Game.Game;
 //TODO: Maybe change the pos Vect back to a point?
 namespace Snake_Game.Game.Casting
 {
-    public class Actor : IActor
+    public class TextActor : IActor
     {
         public Vect pos;
         public int fontSize { get; set; }
@@ -14,7 +14,7 @@ namespace Snake_Game.Game.Casting
         public string text { get; set; }
         public double heading = 0;
         public Color color;
-        public Actor(int x = 0, int y = 0, string text = "@", int fontSize = 30)
+        public TextActor(int x = 0, int y = 0, string text = "@", int fontSize = 30)
         {
             pos = new Vect(x, y);
             this.text = text;
@@ -25,12 +25,18 @@ namespace Snake_Game.Game.Casting
         {
             //Raylib.DrawRectangleLinesEx(getBound(),2,Color.GOLD);
             Raylib.DrawText(text, ((int)pos.x), ((int)pos.y), fontSize, color);
+
         }
-        public virtual void Update(int maxX, int maxY)
+        public void Draw(bool debug)
+        {
+            Raylib.DrawRectangleLinesEx(getBound(), 2, Color.GOLD);
+            Raylib.DrawText(text, ((int)pos.x), ((int)pos.y), fontSize, color);
+        }
+        public void Update(int maxX, int maxY)
         {
             pos = pos + vel;
         }
-        public virtual Rectangle getBound()
+        public Rectangle getBound()
         {
             var size = Raylib.MeasureTextEx(Raylib.GetFontDefault(), text, fontSize, 0);
             //return new Rectangle(pos.x, pos.y, fontSize, fontSize);

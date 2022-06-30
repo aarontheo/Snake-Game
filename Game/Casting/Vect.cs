@@ -12,6 +12,11 @@ namespace Snake_Game.Game.Casting
             this.x = x;
             this.y = y;
         }
+        public Vect(double r)
+        {
+            x = (float) Math.Cos(r);
+            y = (float)Math.Sin(r);
+        }
         public static Vect operator +(Vect a,Vect b)
         {
             return new Vect(a.x + b.x, a.y + b.y);
