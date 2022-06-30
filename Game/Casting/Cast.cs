@@ -7,17 +7,17 @@ namespace Snake_Game.Game.Casting
     /// </summary>
     public class Cast
 {
-    private Dictionary<String, List<Actor>> actors = new Dictionary<String, List<Actor>>();
+    private Dictionary<String, List<IActor>> actors = new Dictionary<String, List<IActor>>();
     /// <summary>
     /// Adds the given Actor to the given group.
     /// </summary>
     /// <param name="group"></param>
     /// <param name="actor"></param>
-    public void Add(string group, Actor actor)
+    public void Add(string group, IActor actor)
     {
         if (!actors.ContainsKey(group))
         {
-            actors[group] = new List<Actor>();
+            actors[group] = new List<IActor>();
         }
         if (!actors[group].Contains(actor))
         {
@@ -29,7 +29,7 @@ namespace Snake_Game.Game.Casting
     /// </summary>
     /// <param name="group"></param>
     /// <param name="actor"></param>
-    public void Remove(string group, Actor actor)
+    public void Remove(string group, IActor actor)
     {
         if (actors.ContainsKey(group))
         {
@@ -41,10 +41,10 @@ namespace Snake_Game.Game.Casting
     /// </summary>
     /// <param name="group"></param>
     /// <returns></returns>
-    public List<Actor> GetActors()
+    public List<IActor> GetActors()
     {
-        List<Actor> results = new List<Actor>();
-        foreach (List<Actor> result in actors.Values)
+        List<IActor> results = new List<IActor>();
+        foreach (List<IActor> result in actors.Values)
         {
             results.AddRange(result);
         }
@@ -54,16 +54,16 @@ namespace Snake_Game.Game.Casting
     /// Returns a list of all actors belonging to  a given group
     /// </summary>
     /// <returns></returns>
-    public List<Actor> GetActors(string group)
+    public List<IActor> GetActors(string group)
     {
-        List<Actor> results = new List<Actor>();
+        List<IActor> results = new List<IActor>();
         if (actors.ContainsKey(group))
         {
             results.AddRange(actors[group]);
         }
         return results;
     }
-    public Actor GetFirstActor(string group)
+    public IActor GetFirstActor(string group)
     {
         if (actors.ContainsKey(group) & actors.Count > 0)
         {
@@ -76,14 +76,14 @@ namespace Snake_Game.Game.Casting
     }
     public void Update(int maxX, int maxY)
     {
-        foreach (Actor a in GetActors())
+        foreach (IActor a in GetActors())
         {
             a.Update(maxX, maxY);
         }
     }
     public void Draw()
     {
-        foreach (Actor a in GetActors())
+        foreach (IActor a in GetActors())
         {
             a.Draw();
         }

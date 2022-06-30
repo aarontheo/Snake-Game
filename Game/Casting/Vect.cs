@@ -29,6 +29,17 @@ namespace Snake_Game.Game.Casting
         {
             return new Vect(a.x * b, a.y * b); //For some reason this doesnt work
         }
+        /// <summary>
+        /// Returns the distance between two Vect objects
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public float Dist(Vect bv)
+        {
+            double a2 = Math.Pow((x - bv.x),2);
+            double b2 = Math.Pow((y - bv.y),2);
+            return (float) Math.Sqrt(a2+b2);
+        }
         public Vect Neg()
         {
             return this * -1;

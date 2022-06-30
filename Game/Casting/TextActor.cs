@@ -27,12 +27,12 @@ namespace Snake_Game.Game.Casting
             Raylib.DrawText(text, ((int)pos.x), ((int)pos.y), fontSize, color);
 
         }
-        public void Draw(bool debug)
+        public virtual void Draw(bool debug)
         {
             Raylib.DrawRectangleLinesEx(getBound(), 2, Color.GOLD);
             Raylib.DrawText(text, ((int)pos.x), ((int)pos.y), fontSize, color);
         }
-        public void Update(int maxX, int maxY)
+        public virtual void Update(int maxX, int maxY)
         {
             pos = pos + vel;
         }

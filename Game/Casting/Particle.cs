@@ -2,7 +2,7 @@ using System;
 
 namespace Snake_Game.Game.Casting
 {
-    public class Particle: Actor
+    public class Particle: TextActor
     {
         public int lifetime;
         public static Random rng = new Random();

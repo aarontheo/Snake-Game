@@ -8,33 +8,54 @@ namespace Snake_Game.Game.Casting
 {
     public class Actor : IActor
     {
-        public Vect pos;
-        public int fontSize { get; set; }
-        public Vect vel = new Vect(0, 0);
-        public string text { get; set; }
+        public Color color = Color.GREEN;
         public double heading = 0;
-        public Color color;
-        public Actor(int x = 0, int y = 0, string text = "@", int fontSize = 30)
+        public Point size;
+        public Vect pos;
+        public Vect vel = new Vect(0, 0);
+        public Actor(int x = 0, int y = 0, int width = 10, int height = 10)
         {
             pos = new Vect(x, y);
-            this.text = text;
-            this.fontSize = fontSize;
-            this.color = new Color(200, 200, 200, 255);
+            size = new Point(width, height);
         }
         public virtual void Draw()
         {
-            //Raylib.DrawRectangleLinesEx(getBound(),2,Color.GOLD);
-            Raylib.DrawText(text, ((int)pos.x), ((int)pos.y), fontSize, color);
+            Raylib.DrawRectangle((int)pos.x, (int)pos.y, size.x, size.y, color);
         }
         public virtual void Update(int maxX, int maxY)
         {
             pos = pos + vel;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="maxX"></param>
+        /// <param name="maxY"></param>
+        /// <param name="wraparound">Ok so this parameter isn't used in </param>
+        public void Wraparound(int maxX,int maxY)
+        {
+            //this bit allows for screen wraparound
+            if (pos.x < 0 - size.x)
+            {
+                pos.x = maxX;
+            }
+            else if (pos.x > maxX)
+            {
+                pos.x = 0 - size.x;
+            }
+            if (pos.y < 0 - size.y)
+            {
+                pos.y = maxY;
+            }
+            else if (pos.y > maxY)
+            {
+                pos.y = 0 - size.y;
+            }
+        }
         public virtual Rectangle getBound()
         {
-            var size = Raylib.MeasureTextEx(Raylib.GetFontDefault(), text, fontSize, 0);
             //return new Rectangle(pos.x, pos.y, fontSize, fontSize);
-            return new Rectangle(pos.x, pos.y + size.Y / 3, size.X, size.Y / 2);
+            return new Rectangle(pos.x, pos.y, size.x, size.y);
         }
         public bool isColliding(IActor b)
         {
