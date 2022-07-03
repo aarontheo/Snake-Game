@@ -124,11 +124,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/Snake-Game/Snake-Game.csproj",
+      "projectUniqueName": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/Snake-Game.csproj",
       "projectName": "Snake-Game",
-      "projectPath": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/Snake-Game/Snake-Game.csproj",
+      "projectPath": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/Snake-Game.csproj",
       "packagesPath": "/Users/aarontheobald/.nuget/packages/",
-      "outputPath": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/Snake-Game/obj/",
+      "outputPath": "/Users/aarontheobald/Desktop/Projects/C#/Snake-Game/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/aarontheobald/.nuget/NuGet/NuGet.Config"

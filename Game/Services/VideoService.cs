@@ -1,7 +1,7 @@
 using System;
 using Raylib_cs;
 
-namespace Snake_Game.Game
+namespace Snake_Game.Services
 {
     public class VideoService
     {

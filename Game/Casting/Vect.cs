@@ -48,10 +48,6 @@ namespace Snake_Game.Game.Casting
         {
             return Math.Abs(x) + Math.Abs(y);
         }
-        public Vect Max()
-        {
-            return null;
-        }
         /// <summary>
         /// Returns a clamped version of this Vect, where the absolute value of each component is capped to 
         /// the corresponding component of the limit Vect.

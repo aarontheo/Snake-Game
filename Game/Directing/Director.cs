@@ -1,9 +1,9 @@
 using System;
 using Raylib_cs;
-using Snake_Game.Game;
+using Snake_Game.Services;
 using Snake_Game.Game.Casting;
 
-namespace Snake_Game.Directing.Game
+namespace Snake_Game.Directing
 {
     public class Director
     {
@@ -12,7 +12,6 @@ namespace Snake_Game.Directing.Game
         public Director(VideoService videoService)
         {
             this.videoService = videoService;
-            //this.inputService = inputService;
         }
         public void StartGame(Cast cast)
         {
@@ -23,9 +22,13 @@ namespace Snake_Game.Directing.Game
                 if (isRunning)
                 {
                     cast.Update(videoService.width, videoService.height);
+                    
+                    videoService.ClearBuffer();
                     cast.Draw();
+                    videoService.FlushBuffer();
                 }
             }
+            videoService.CloseWindow();
         }
     }
 }
